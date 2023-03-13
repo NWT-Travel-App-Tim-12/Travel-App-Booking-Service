@@ -16,9 +16,9 @@ public class Itinerary {
     private String name;
     private String description;
     private String serviceType;
-    private String additionalDetails;
+    private Object additionalDetails;
 
-    public Itinerary(Integer id, Integer bookingId, Integer serviceRef, Integer day, Integer capacity, String regionNote, String name, String description, String serviceType, String additionalDetails) {
+    public Itinerary(Integer id, Integer bookingId, Integer serviceRef, Integer day, Integer capacity, String regionNote, String name, String description, String serviceType, Object additionalDetails) {
         this.id = id;
         this.bookingId = bookingId;
         this.serviceRef = serviceRef;
@@ -31,7 +31,7 @@ public class Itinerary {
         this.additionalDetails = additionalDetails;
     }
 
-    public Itinerary(Integer bookingId, Integer serviceRef, Integer day, Integer capacity, String regionNote, String name, String description, String serviceType, String additionalDetails) {
+    public Itinerary(Integer bookingId, Integer serviceRef, Integer day, Integer capacity, String regionNote, String name, String description, String serviceType, Object additionalDetails) {
         this.bookingId = bookingId;
         this.serviceRef = serviceRef;
         this.day = day;
@@ -117,11 +117,11 @@ public class Itinerary {
         this.serviceType = serviceType;
     }
 
-    public String getAdditionalDetails() {
+    public Object getAdditionalDetails() {
         return additionalDetails;
     }
 
-    public void setAdditionalDetails(String additionalDetails) {
+    public void setAdditionalDetails(Object additionalDetails) {
         this.additionalDetails = additionalDetails;
     }
 }
