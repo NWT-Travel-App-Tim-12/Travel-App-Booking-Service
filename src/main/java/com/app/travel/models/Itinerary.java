@@ -42,4 +42,16 @@ public class Itinerary {
     @Getter
     @Setter
     private String additionalDetails;
+
+    public Itinerary(Booking bookingRef, Integer serviceRef, Integer day, Integer capacity, String regionNote, String name, String description, String serviceType, String additionalDetails) {
+        this.bookingRef = bookingRef;
+        this.serviceRef = serviceRef;
+        this.day = day;
+        this.capacity = capacity;
+        this.regionNote = regionNote;
+        this.name = name;
+        this.description = description;
+        this.serviceType = serviceType;
+        this.additionalDetails = additionalDetails;
+    }
 }

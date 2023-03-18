@@ -63,4 +63,23 @@ public class Booking {
     @Getter
     @Setter
     private List<Review> reviews;
+
+    public Booking(String bookingCode, String name, String description, String regionNote, Integer userRef, Integer packageRef, Integer numberOfDays, Integer cost, Integer passengerNumber, Boolean paid, LocalDate startAt, LocalDate createdAt, List<Itinerary> itineraries, List<Review> reviews) {
+        this.id = id;
+        this.bookingCode = bookingCode;
+        this.name = name;
+        this.description = description;
+        this.regionNote = regionNote;
+        this.userRef = userRef;
+        this.packageRef = packageRef;
+        this.numberOfDays = numberOfDays;
+        this.cost = cost;
+        this.passengerNumber = passengerNumber;
+        this.paid = paid;
+        this.startAt = startAt;
+        this.createdAt = createdAt;
+        this.itineraries = itineraries;
+        this.reviews = reviews;
+    }
+
 }

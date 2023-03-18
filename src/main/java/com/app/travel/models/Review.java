@@ -27,4 +27,11 @@ public class Review {
     @Getter
     @Setter
     private Float rating;
+
+    public Review(Booking bookingRef, String userRef, String comment, Float rating) {
+        this.bookingRef = bookingRef;
+        this.userRef = userRef;
+        this.comment = comment;
+        this.rating = rating;
+    }
 }
