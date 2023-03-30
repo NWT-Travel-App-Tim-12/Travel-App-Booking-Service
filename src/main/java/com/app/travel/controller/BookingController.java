@@ -17,13 +17,9 @@ public class BookingController {
         this.bookingService = bookingService;
     }
 
-    @GetMapping(path="/b1")
+    @GetMapping(path="/all")
     public List<Booking> getBookings() {
         return bookingService.getBookings();
     }
 
-    @GetMapping(path="/test")
-    public String getTest() {
-        return "Evo";
-    }
 }
