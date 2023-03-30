@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 @RestController
-@RequestMapping(path="/api/v1/booking")
+@RequestMapping(path="/booking")
 public class BookingController {
     private BookingService bookingService;
     @Autowired
@@ -17,8 +17,13 @@ public class BookingController {
         this.bookingService = bookingService;
     }
 
-    @GetMapping
+    @GetMapping(path="/b1")
     public List<Booking> getBookings() {
         return bookingService.getBookings();
+    }
+
+    @GetMapping(path="/test")
+    public String getTest() {
+        return "Evo";
     }
 }

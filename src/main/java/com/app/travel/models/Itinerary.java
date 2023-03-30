@@ -1,5 +1,7 @@
 package com.app.travel.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -7,6 +9,7 @@ import lombok.*;
 @Table(name = "itineraries")
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Itinerary {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,7 +17,8 @@ public class Itinerary {
     @Getter
     @Setter
     private Integer id;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @JsonBackReference
     @Getter
     @Setter
     private Booking bookingRef;

@@ -14,8 +14,7 @@ import java.util.List;
 public class ItineraryConfig {
     @Bean
     CommandLineRunner commandLineRunnerItinerary (ItineraryRepository itineraryRepository){
-        Itinerary ii = new Itinerary(
-                new Booking(1,"R8092", "Booking Num1", "First booking this year","Region 1", 1,1,10,2393,30, true, LocalDate.now(), LocalDate.of(2023,1,1), null,null)
+        Itinerary ii = new Itinerary(new Booking(1,"R8092", "Booking Num1", "First booking this year","Region 1", 1,1,10,2393,30, true, LocalDate.now(), LocalDate.of(2023,1,1), null,null)
                 , 1,4,34,"FJ463", "itinerary 1", "Short description", "Hotel", "Some details");
         return args -> {
             itineraryRepository.saveAll(List.of(ii));
