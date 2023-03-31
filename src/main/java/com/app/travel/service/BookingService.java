@@ -20,4 +20,11 @@ public class BookingService {
     public Booking createBooking(Booking booking) {
         return bookingRepository.save(booking);
     }
+    public Booking updateBooking(Booking booking){
+       return bookingRepository.save(booking);
+    }
+    public Integer deleteBooking(Integer id){
+        bookingRepository.deleteById(id);
+        return 200;
+    }
 }
