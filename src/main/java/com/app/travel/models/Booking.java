@@ -1,6 +1,9 @@
 package com.app.travel.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -20,9 +23,12 @@ public class Booking {
     @Getter
     @Setter
     private String bookingCode;
+    @Size(min=3, max = 100, message = "Name must be between {min} and {max} characters!")
+    @NotNull
     @Getter
     @Setter
     private String name;
+    @Size( max = 100, message = "Name must be between {min} and {max} characters!")
     @Getter
     @Setter
     private String description;

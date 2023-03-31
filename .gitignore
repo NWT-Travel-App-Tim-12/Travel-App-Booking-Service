@@ -1,1 +1,7 @@
+HELP.md
 /.idea/
+
+### VS Code ###
+.vscode/
+
+/target/
