@@ -1,30 +1,15 @@
 package com.app.travel.service;
 
 import com.app.travel.models.Booking;
-import com.app.travel.repository.BookingRepository;
+import com.app.travel.repositories.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
-public class BookingService {
-    private final BookingRepository bookingRepository;
+public class BookingService extends  BaseCrudService<Booking, Integer> {
     @Autowired
     public BookingService(BookingRepository bookingRepository) {
-        this.bookingRepository = bookingRepository;
-    }
-
-    public List<Booking> getBookings(){
-        return bookingRepository.findAll();
-    }
-    public Booking createBooking(Booking booking) {
-        return bookingRepository.save(booking);
-    }
-    public Booking updateBooking(Booking booking){
-       return bookingRepository.save(booking);
-    }
-    public Integer deleteBooking(Integer id){
-        bookingRepository.deleteById(id);
-        return 200;
+        super(bookingRepository);
     }
 }

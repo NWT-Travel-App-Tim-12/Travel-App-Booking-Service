@@ -1,4 +1,4 @@
-package com.app.travel.repository;
+package com.app.travel.repositories;
 
 import com.app.travel.models.Itinerary;
 import org.springframework.data.jpa.repository.JpaRepository;

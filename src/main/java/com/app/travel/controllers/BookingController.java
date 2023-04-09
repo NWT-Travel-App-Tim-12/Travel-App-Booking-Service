@@ -1,4 +1,4 @@
-package com.app.travel.controller;
+package com.app.travel.controllers;
 
 import com.app.travel.models.Booking;
 import com.app.travel.service.BookingService;
@@ -16,33 +16,29 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 @RestController
 @RequestMapping(path="/booking")
-public class BookingController {
-    private BookingService bookingService;
+public class BookingController extends  BaseController<Booking, Integer, BookingService>{
     @Autowired
     public BookingController(BookingService bookingService) {
-        this.bookingService = bookingService;
+        super(bookingService);
     }
-
-    @GetMapping(path="/all")
-    public List<Booking> getAll() {
-        return bookingService.getBookings();
+    @GetMapping(path = "/all")
+    public ResponseEntity<List<Booking>> getAll(int page, int pageSize) throws Exception {
+        return super.getAll(page, pageSize);
     }
-
-    @PostMapping("/new")
-    public ResponseEntity<Booking> create(@RequestBody Booking booking) {
-        return ResponseEntity.ok(bookingService.createBooking(booking));
+    @PostMapping
+    public ResponseEntity<Booking> post(@RequestBody Booking booking) throws Exception{
+        return super.post(booking);
     }
-    @PutMapping("/{id}")
-    public ResponseEntity<Booking> update(@RequestBody Booking booking) {
-        return ResponseEntity.ok(bookingService.updateBooking(booking));
+    @PutMapping
+    public ResponseEntity<Booking> put(Integer id,@RequestBody Booking booking) throws Exception {
+        return  super.put(id, booking);
     }
-    @PatchMapping("/{id}")
-    public ResponseEntity<Booking> patch(@RequestBody Booking booking) {
-        return ResponseEntity.ok(bookingService.updateBooking(booking));
+    @PatchMapping
+    public ResponseEntity<Booking> patch(Integer id,@RequestBody Booking booking) throws Exception {
+        return  super.put(id, booking);
     }
     @DeleteMapping
     public ResponseEntity<Integer> delete(Integer id) {
-        return ResponseEntity.ok(bookingService.deleteBooking(id));
+        return super.delete(id);
     }
-
 }

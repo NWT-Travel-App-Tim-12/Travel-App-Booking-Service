@@ -1,7 +1,7 @@
 package com.app.travel.configuration;
 
 import com.app.travel.models.Booking;
-import com.app.travel.repository.BookingRepository;
+import com.app.travel.repositories.BookingRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

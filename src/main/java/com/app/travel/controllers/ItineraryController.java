@@ -1,4 +1,4 @@
-package com.app.travel.controller;
+package com.app.travel.controllers;
 
 import com.app.travel.models.Booking;
 import com.app.travel.models.Itinerary;
@@ -18,31 +18,30 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path="/itinerary")
-public class ItineraryController {
-    private ItineraryService itineraryService;
+public class ItineraryController extends BaseController<Itinerary, Integer, ItineraryService> {
     @Autowired
     public ItineraryController(ItineraryService itineraryService) {
-        this.itineraryService = itineraryService;
+       super(itineraryService);
     }
-    @GetMapping(path="/all")
-    public List<Itinerary> getAll() {
-        return itineraryService.getAll();
+    @GetMapping(path = "/all")
+    public ResponseEntity<List<Itinerary>> getAll(int page, int pageSize) throws Exception {
+        return super.getAll(page, pageSize);
     }
-    @PostMapping("/new")
-    public ResponseEntity<Itinerary> create(@RequestBody Itinerary itinerary) {
-        return ResponseEntity.ok(itineraryService.createItinerary(itinerary));
+    @PostMapping
+    public ResponseEntity<Itinerary> post(@RequestBody Itinerary itinerary) throws Exception{
+        return super.post(itinerary);
     }
-    @PutMapping("/{id}")
-    public ResponseEntity<Itinerary> update(@RequestBody Itinerary itinerary) {
-        return ResponseEntity.ok(itineraryService.updateItinerary(itinerary));
+    @PutMapping
+    public ResponseEntity<Itinerary> put(Integer id,@RequestBody Itinerary itinerary) throws Exception {
+        return  super.put(id, itinerary);
     }
-    @PatchMapping("/{id}")
-    public ResponseEntity<Itinerary> patch(@RequestBody Itinerary itinerary) {
-        return ResponseEntity.ok(itineraryService.updateItinerary(itinerary));
+    @PatchMapping
+    public ResponseEntity<Itinerary> patch(Integer id,@RequestBody Itinerary itinerary) throws Exception {
+        return  super.put(id, itinerary);
     }
     @DeleteMapping
     public ResponseEntity<Integer> delete(Integer id) {
-        return ResponseEntity.ok(itineraryService.deleteItinerary(id));
+        return super.delete(id);
     }
 
 }

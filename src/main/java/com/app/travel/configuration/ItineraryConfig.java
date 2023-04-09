@@ -2,7 +2,7 @@ package com.app.travel.configuration;
 
 import com.app.travel.models.Booking;
 import com.app.travel.models.Itinerary;
-import com.app.travel.repository.ItineraryRepository;
+import com.app.travel.repositories.ItineraryRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

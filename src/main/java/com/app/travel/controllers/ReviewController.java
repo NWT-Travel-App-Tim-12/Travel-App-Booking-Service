@@ -1,6 +1,8 @@
-package com.app.travel.controller;
+package com.app.travel.controllers;
 
+import com.app.travel.models.Itinerary;
 import com.app.travel.models.Review;
+import com.app.travel.service.BaseCrudService;
 import com.app.travel.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,30 +19,30 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path="/review")
-public class ReviewController {
+public class ReviewController extends BaseController<Review,Integer, ReviewService> {
     private ReviewService reviewService;
     @Autowired
     public ReviewController(ReviewService reviewService) {
-        this.reviewService = reviewService;
+        super(reviewService);
     }
-    @GetMapping(path="/all")
-    public List<Review> getAll() {
-        return reviewService.getAll();
+    @GetMapping(path = "/all")
+    public ResponseEntity<List<Review>> getAll(int page, int pageSize) throws Exception {
+        return super.getAll(page, pageSize);
     }
-    @PostMapping("/new")
-    public ResponseEntity<Review> create(@RequestBody Review review) {
-        return ResponseEntity.ok(reviewService.createReview(review));
+    @PostMapping
+    public ResponseEntity<Review> post(@RequestBody Review review) throws Exception{
+        return super.post(review);
     }
-    @PutMapping("/{id}")
-    public ResponseEntity<Review> update(@RequestBody Review review) {
-        return ResponseEntity.ok(reviewService.updateReview(review));
+    @PutMapping
+    public ResponseEntity<Review> put(Integer id,@RequestBody Review review) throws Exception {
+        return  super.put(id, review);
     }
-    @PatchMapping("/{id}")
-    public ResponseEntity<Review> patch(@RequestBody Review review) {
-        return ResponseEntity.ok(reviewService.updateReview(review));
+    @PatchMapping
+    public ResponseEntity<Review> patch(Integer id,@RequestBody Review review) throws Exception {
+        return  super.put(id, review);
     }
     @DeleteMapping
     public ResponseEntity<Integer> delete(Integer id) {
-        return ResponseEntity.ok(reviewService.deleteReview(id));
+        return super.delete(id);
     }
 }
