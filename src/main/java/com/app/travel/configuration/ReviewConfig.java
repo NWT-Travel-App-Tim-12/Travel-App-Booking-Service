@@ -20,7 +20,7 @@ public class ReviewConfig {
         Review r3 = new Review(booking, "22","Awesome", 1F);
         Review r4 = new Review(booking, "29","I'm not satisfied", 0.3F);
         return args -> {
-            reviewRepository.saveAll(List.of(r1,r2,r3,r4));
+//            reviewRepository.saveAll(List.of(r1,r2,r3,r4));
         };
     }
 }

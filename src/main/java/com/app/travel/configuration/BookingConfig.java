@@ -14,8 +14,8 @@ public class BookingConfig {
     @Bean
     CommandLineRunner commandLineRunnerBooking (BookingRepository bookingRepository){
         return args -> {
-            Booking b1 = new Booking(1,"R8092", "Booking Num1", "First booking this year","Region 1", 1,1,10,2393,30, true, LocalDate.now(), LocalDate.of(2023,1,1), null,null);
-            bookingRepository.saveAll(List.of(b1));
+//            Booking b1 = new Booking(1,"R8092", "Booking Num1", "First booking this year","Region 1", 1,1,10,2393,30, true, LocalDate.now(), LocalDate.of(2023,1,1), null,null);
+//            bookingRepository.saveAll(List.of(b1));
 
         };
     }
