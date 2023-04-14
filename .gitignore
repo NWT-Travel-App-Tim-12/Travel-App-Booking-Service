@@ -1,1 +1,12 @@
+HELP.md
 /.idea/
+
+### VS Code ###
+.vscode/
+/target/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr

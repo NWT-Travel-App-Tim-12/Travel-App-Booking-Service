@@ -1,6 +1,9 @@
 package com.app.travel.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -20,9 +23,12 @@ public class Booking {
     @Getter
     @Setter
     private String bookingCode;
+    @Size(min=3, max = 100, message = "Name must be between {min} and {max} characters!")
+    @NotNull
     @Getter
     @Setter
     private String name;
+    @Size( max = 100, message = "Name must be between {min} and {max} characters!")
     @Getter
     @Setter
     private String description;
@@ -63,4 +69,23 @@ public class Booking {
     @Getter
     @Setter
     private List<Review> reviews;
+
+    public Booking(String bookingCode, String name, String description, String regionNote, Integer userRef, Integer packageRef, Integer numberOfDays, Integer cost, Integer passengerNumber, Boolean paid, LocalDate startAt, LocalDate createdAt, List<Itinerary> itineraries, List<Review> reviews) {
+        this.id = id;
+        this.bookingCode = bookingCode;
+        this.name = name;
+        this.description = description;
+        this.regionNote = regionNote;
+        this.userRef = userRef;
+        this.packageRef = packageRef;
+        this.numberOfDays = numberOfDays;
+        this.cost = cost;
+        this.passengerNumber = passengerNumber;
+        this.paid = paid;
+        this.startAt = startAt;
+        this.createdAt = createdAt;
+        this.itineraries = itineraries;
+        this.reviews = reviews;
+    }
+
 }
