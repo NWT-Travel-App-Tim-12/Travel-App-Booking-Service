@@ -1,8 +1,8 @@
 package com.app.travel.models;
 
+import com.app.travel.models.dto.CreatedBooking;
+import com.app.travel.util.BookingStatus;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
@@ -24,7 +24,6 @@ public class Booking {
     @Setter
     private String bookingCode;
     @Size(min=3, max = 100, message = "Name must be between {min} and {max} characters!")
-    @NotNull
     @Getter
     @Setter
     private String name;
@@ -37,7 +36,7 @@ public class Booking {
     private String regionNote;
     @Getter
     @Setter
-    private Integer userRef;
+    private Integer userRef = -1;
     @Getter
     @Setter
     private Integer packageRef;
@@ -70,6 +69,13 @@ public class Booking {
     @Setter
     private List<Review> reviews;
 
+    @Getter
+    @Setter
+    private BookingStatus status;
+
+    @Getter
+    @Setter
+    private String imageUrl;
     public Booking(String bookingCode, String name, String description, String regionNote, Integer userRef, Integer packageRef, Integer numberOfDays, Integer cost, Integer passengerNumber, Boolean paid, LocalDate startAt, LocalDate createdAt, List<Itinerary> itineraries, List<Review> reviews) {
         this.id = id;
         this.bookingCode = bookingCode;
@@ -86,6 +92,31 @@ public class Booking {
         this.createdAt = createdAt;
         this.itineraries = itineraries;
         this.reviews = reviews;
+    }
+
+
+    public void assignFromCreatedBooking(CreatedBooking createdBooking){
+        this.bookingCode = createdBooking.getBookingCode();
+        this.name = createdBooking.getName();
+        this.description = createdBooking.getDescription();
+        this.regionNote = createdBooking.getRegionNote();
+        this.userRef = createdBooking.getUserRef();
+        this.packageRef = createdBooking.getPackageRef();
+        this.numberOfDays = createdBooking.getNumberOfDays();
+        this.cost = createdBooking.getCost();
+        this.passengerNumber = createdBooking.getPassengerNumber();
+        this.paid = createdBooking.getPaid();
+        this.startAt = createdBooking.getStartAt();
+        this.createdAt = createdBooking.getCreatedAt();
+        this.itineraries = createdBooking.getItineraries().stream().map(el -> el.toItinerary(this)).toList();
+        this.reviews = List.of(new Review(
+                this,
+                "-1",
+                "",
+                0f
+        ));
+        this.imageUrl = createdBooking.getImageUrl() == null ? "" : createdBooking.getImageUrl();
+        this.status = createdBooking.getStatus();
     }
 
 }

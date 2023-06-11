@@ -26,7 +26,7 @@ public class Itinerary {
     @JsonBackReference
     @Getter
     @Setter
-    private Booking bookingRef;
+    private Booking bookingRef = null;
     @NotNull
     @Getter
     @Setter
@@ -56,6 +56,9 @@ public class Itinerary {
     @Getter
     @Setter
     private String additionalDetails;
+    @Getter
+    @Setter
+    private String imageUrl;
 
     public Itinerary(Booking bookingRef, Integer serviceRef, Integer day, Integer capacity, String regionNote, String name, String description, String serviceType, String additionalDetails) {
         this.bookingRef = bookingRef;
