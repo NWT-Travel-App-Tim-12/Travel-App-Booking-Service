@@ -8,6 +8,7 @@ import static org.mockito.Mockito.when;
 import com.app.travel.models.Booking;
 import com.app.travel.repositories.BookingRepository;
 
+import com.app.travel.util.BookingStatus;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -51,13 +52,13 @@ class BookingServiceTests {
 	void setupBeforeEach(){
 		MockitoAnnotations.initMocks(this);
 		listOfBookings = IntStream.range(1, 10)
-				.mapToObj(i -> new Booking( i,"R8092", "Booking Num1", "First booking this year","Region 1", 1,1,10,2393,30, true, LocalDate.now(), LocalDate.of(2023,1,1), null,null))
+				.mapToObj(i -> new Booking( i,"R8092", "Booking Num1", "First booking this year","Region 1", 1,1,10,2393,30, true, LocalDate.now(), LocalDate.of(2023,1,1), null,null, BookingStatus.UnderReview, ""))
 				.collect(Collectors.toList());
 	}
 	@BeforeAll
 	static void setUp(){
-		 b1 = new Booking(2,"R8092", "Booking Num1", "First booking this year","Region 1", 1,1,10,2393,30, true, LocalDate.now(), LocalDate.of(2023,1,1), null,null);
-		 b2 = new Booking(3,"R8092", "B11", "First booking this year","Region 1", 1,1,10,2393,30, true, LocalDate.now(), LocalDate.of(2023,1,1), null,null);
+		 b1 = new Booking(2,"R8092", "Booking Num1", "First booking this year","Region 1", 1,1,10,2393,30, true, LocalDate.now(), LocalDate.of(2023,1,1), null,null, BookingStatus.UnderReview, "");
+		 b2 = new Booking(3,"R8092", "B11", "First booking this year","Region 1", 1,1,10,2393,30, true, LocalDate.now(), LocalDate.of(2023,1,1), null,null, BookingStatus.UnderReview, "");
 	}
 	@Test
 	void testCreatingBookingNotThrowingException(){
